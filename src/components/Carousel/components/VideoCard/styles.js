@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+//css dos videos
 export const VideoCardContainer = styled.a`
   border: 2px solid;
   border-radius: 4px;
@@ -23,9 +24,11 @@ export const VideoCardContainer = styled.a`
   &:hover,
   &:focus {
     opacity: .5;
+    transform: scale(1.2) rotate(-2deg);
   }
   
   &:not(:first-child) {
     margin-left: 20px;
   }
 `;
+
