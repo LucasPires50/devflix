@@ -53,6 +53,9 @@ const Slider = ({ children }) => (
       {children}
     </SlickSlider>
   </Container>
+
+  
 );
+
 
 export default Slider; 
