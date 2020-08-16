@@ -36,7 +36,6 @@ function CadastroCategoria() {
       </h1>
 
       <form
-        style={{ background: values.cor }}
         onSubmit={function handleSubmit(infosDoEvento) {
           infosDoEvento.preventDefault();
           setCategorias([
