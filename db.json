@@ -5,6 +5,12 @@
             "nome": "Front End",
             "decricao": "Uma categoria bacanudassa",
             "cor": "#CBD1FF"
+        },
+        {
+            "id": 2,
+            "nome": "Back End",
+            "decricao": "Outra categoria bacanudassa",
+            "cor": "#CBD1FF"
         }
     ]
     
