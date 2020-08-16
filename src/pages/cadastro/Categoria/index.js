@@ -21,11 +21,10 @@ function CadastroCategoria() {
     });
   }
 
-  function handleChange(infoDeEventos) {
-    const { getAttribute, value } = infoDeEventos.target;
+  function handleChange(infosDoEvento) {
     setValue(
-      getAttribute('name'),
-      value,
+      infosDoEvento.target.getAttribute('name'),
+      infosDoEvento.target.value
     );
   }
 
@@ -38,8 +37,8 @@ function CadastroCategoria() {
 
       <form
         style={{ background: values.cor }}
-        onSubmit={function handleSubmit(infosDoEventos) {
-          infosDoEventos.preventDefault();
+        onSubmit={function handleSubmit(infosDoEvento) {
+          infosDoEvento.preventDefault();
           setCategorias([
             ...categorias,
             values,
@@ -87,7 +86,7 @@ function CadastroCategoria() {
       </ul>
 
       <Link to="/">
-        Ir para home 
+        Ir para home
       </Link>
     </PageDefault>
   );
