@@ -37,24 +37,24 @@ function CadastroCategoria() {
         setCategorias([
           ...resposta,
         ]);
-    });
+      });
 
     // PARA TESTES
     // setTimeout(() => {
     //   setCategorias([
     //     ...categorias,
-        // {
-        //   id: 1,
-        //   nome: 'Front End',
-        //   decricao: 'Uma categoria bacanudassa',
-        //   cor: '#CBD1FF',
-        // },
-        // {
-        //   id: 2,
-        //   nome: 'Back End',
-        //   decricao: 'Outra categoria bacanudassa',
-        //   cor: '#CBD1FF',
-        // },
+    // {
+    //   id: 1,
+    //   nome: 'Front End',
+    //   decricao: 'Uma categoria bacanudassa',
+    //   cor: '#CBD1FF',
+    // },
+    // {
+    //   id: 2,
+    //   nome: 'Back End',
+    //   decricao: 'Outra categoria bacanudassa',
+    //   cor: '#CBD1FF',
+    // },
     //   ]);
     // }, 4 * 1000);
   }, []);
@@ -108,7 +108,8 @@ function CadastroCategoria() {
         { categorias.length === 0 && (
           <div>
             Loading...
-          </div>)}
+          </div>
+        )}
 
       </form>
 
