@@ -1,7 +1,10 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable react/prop-types */
+/* eslint-disable linebreak-style */
 import React from 'react';
+import styled from 'styled-components';
 import Footer from '../Footer';
 import Menu from '../Menu';
-import styled from 'styled-components';
 
 const Main = styled.main`
     background-color: var(--black);
@@ -12,17 +15,17 @@ const Main = styled.main`
     padding-right: 5%;
 `;
 
-function PageDefault({ children }){
-    return(
-        //todo componente precisa ter alguma estrutura em volta como por ex: <div>
-        <>
-            <Menu />
-                <Main>
-                {children}
-                </Main>
-            <Footer />
-        </>
-    );
+function PageDefault({ children }) {
+  return (
+  // todo componente precisa ter alguma estrutura em volta como por ex: <div>
+    <>
+      <Menu />
+      <Main>
+        {children}
+      </Main>
+      <Footer />
+    </>
+  );
 }
 
 export default PageDefault;
