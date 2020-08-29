@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hocks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -11,23 +12,10 @@ function CadastroCategoria() {
     descricao: '',
     cor: '',
   };
+
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
+
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
-
-  // chave: descrição, nome, cor. Ela é dinamica
-  function setValue(chave, valor) {
-    setValues({
-      ...values,
-      [chave]: valor, // nome: 'valor
-    });
-  }
-
-  function handleChange(infosDoEvento) {
-    setValue(
-      infosDoEvento.target.getAttribute('name'),
-      infosDoEvento.target.value,
-    );
-  }
 
   useEffect(() => {
     // so for localhost ele pega uma do contrario pega a outra.
@@ -77,7 +65,7 @@ function CadastroCategoria() {
             values,
           ]);
 
-          setValues(valoresIniciais);
+          clearForm();
         }}
       >
 
