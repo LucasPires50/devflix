@@ -1,22 +1,22 @@
 /* eslint-disable linebreak-style */
-// eslint-disable-next-line linebreak-style
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 const FormFieldWrapper = styled.div`
-  position: relative;
+  position: relative; 
   textarea {
     min-height: 150px;
   }
+
   input[type="color"] {
     padding-left: 56px;
   }
 `;
 
 const Label = styled.label``;
-Label.text = styled.span`
-color: #E5E5E5;
+Label.Text = styled.span`
+  color: #E5E5E5;
   height: 57px;
   position: absolute; 
   top: 0;
@@ -40,60 +40,78 @@ const Input = styled.input`
   width: 100%;
   height: 57px;
   font-size: 18px;
-
+  
   outline: 0;
   border: 0;
   border-top: 4px solid transparent;
   border-bottom: 4px solid #53585D;
-
+  
   padding: 16px 16px;
   margin-bottom: 45px;
-
+  
   resize: none;
   border-radius: 4px;
   transition: border-color .3s;
-
+  
   &:focus {
     border-bottom-color: var(--primary);
   }
 
-  &:focus:not([type='color']) + span {
+  &:focus:not([type="color"]) + span {
     transform: scale(.6) translateY(-10px);
   }
 
-  ${({ hasValue }) => hasValue && css `
-      &:not([type='color']) + span {
-        transform: scale(.6) translateY(-10px);
-      }
-    `}
+  ${({ hasValue }) => hasValue && css`
+    &:not([type="color"]) + span {
+      transform: scale(.6) translateY(-10px);
+    }
+  `}
 `;
 
 function FormField({
-  label, type, name, value, onChange,
+  label, type, name, value, onChange, suggestions,
 }) {
-  const feildId = `id_${name}`;
-  const isTextarea = type === 'textarea';
-  const tag = isTextarea ? 'textarea' : 'input';
+  const fieldId = `id_${name}`;
+  const isTypeTextarea = type === 'textarea';
+  const tag = isTypeTextarea ? 'textarea' : 'input';
 
-  const hasValue = Boolean (value.length);
+  const hasValue = Boolean(value.length);
+  const hasSuggestions = Boolean(suggestions.length);
 
   return (
     <FormFieldWrapper>
-      <Label htmlFor={feildId}>
-
+      <Label
+        htmlFor={fieldId}
+      >
         <Input
           as={tag}
-          id={feildId}
+          id={fieldId}
           type={type}
           value={value}
           name={name}
           hasValue={hasValue}
           onChange={onChange}
+          autoComplete={hasSuggestions ? 'off' : 'on'}
+          list={hasSuggestions ? `suggestionFor_${fieldId}` : undefined}
         />
-        <Label.text>
+        <Label.Text>
           {label}
           :
-        </Label.text>
+        </Label.Text>
+        {
+          hasSuggestions && (
+            <datalist id={`suggestionFor_${fieldId}`}>
+              {
+              suggestions.map((suggestion) => (
+                <option value={suggestion} key={`suggestionFor_${fieldId}_option${suggestion}`}>
+                  {suggestion}
+                </option>
+              ))
+            }
+            </datalist>
+          )
+        }
+
       </Label>
     </FormFieldWrapper>
   );
@@ -103,6 +121,7 @@ FormField.defaultProps = {
   type: 'text',
   value: '',
   onChange: () => {},
+  suggestions: [],
 };
 
 FormField.propTypes = {
@@ -111,6 +130,7 @@ FormField.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  suggestions: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default FormField;
